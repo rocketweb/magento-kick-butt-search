@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <rocketweb_search_adminhtml_directsearch_index>
+        <reference name="content">
+            <block type="rocketweb_search/adminhtml_directsearch" name="rocketweb_directsearchresult" />
+        </reference>
+    </rocketweb_search_adminhtml_directsearch_index>
+    <rocketweb_search_adminhtml_directsearch_products>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="rocketweb_search/adminhtml_directsearch_edit_tab_products" name="products.grid"/>
+            <block type="adminhtml/widget_grid_serializer" name="grid_serializer">
+                <reference name="grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>products.grid</grid_block_name>
+                        <data_callback>getSelectedProducts</data_callback>
+                        <hidden_input_name>links[products]</hidden_input_name>
+                        <reload_param_name>products</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </rocketweb_search_adminhtml_directsearch_products>
+    <rocketweb_search_adminhtml_directsearch_productsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="rocketweb_search/adminhtml_directsearch_edit_tab_products" name="products.grid"/>
+        </block>
+    </rocketweb_search_adminhtml_directsearch_productsgrid>
+    
+    <rocketweb_search_adminhtml_directsearch_cms>
+    	<block type="core/text_list" name="root" output="toHtml">
+    		<block type="rocketweb_search/adminhtml_directsearch_edit_tab_cms" name="cms.grid"/>
+    		<block type="adminhtml/widget_grid_serializer" name="grid_serializer">
+                <reference name="grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>cms.grid</grid_block_name>
+                        <data_callback>getSelectedCMS</data_callback>
+                        <hidden_input_name>links[cms]</hidden_input_name>
+                        <reload_param_name>cms</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+    	</block>
+    </rocketweb_search_adminhtml_directsearch_cms>
+    <rocketweb_search_adminhtml_directsearch_cmsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="rocketweb_search/adminhtml_directsearch_edit_tab_cms" name="cms.grid"/>
+        </block>
+    </rocketweb_search_adminhtml_directsearch_cmsgrid>
+    
+    
+    <rocketweb_search_adminhtml_directsearch_blogs>
+    	<block type="core/text_list" name="root" output="toHtml">
+    		<block type="rocketweb_search/adminhtml_directsearch_edit_tab_blogs" name="blogs.grid"/>
+    		<block type="adminhtml/widget_grid_serializer" name="grid_serializer">
+                <reference name="grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>blogs.grid</grid_block_name>
+                        <data_callback>getSelectedBlogs</data_callback>
+                        <hidden_input_name>links[blogs]</hidden_input_name>
+                        <reload_param_name>blogs</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+    	</block>
+    </rocketweb_search_adminhtml_directsearch_blogs>
+    <rocketweb_search_adminhtml_directsearch_blogsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="rocketweb_search/adminhtml_directsearch_edit_tab_blogs" name="blogs.grid"/>
+        </block>
+    </rocketweb_search_adminhtml_directsearch_blogsgrid>
+    
+    <rocketweb_search_adminhtml_directsearch_categories>
+    	<block type="core/text_list" name="root" output="toHtml">
+    		<block type="rocketweb_search/adminhtml_directsearch_edit_tab_categories" name="categories.grid"/>
+    		<block type="adminhtml/widget_grid_serializer" name="grid_serializer">
+                <reference name="grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>categories.grid</grid_block_name>
+                        <data_callback>getSelectedCategories</data_callback>
+                        <hidden_input_name>links[categories]</hidden_input_name>
+                        <reload_param_name>categories</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+    	</block>
+    </rocketweb_search_adminhtml_directsearch_categories>
+    <rocketweb_search_adminhtml_directsearch_categoriesgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="rocketweb_search/adminhtml_directsearch_edit_tab_categories" name="categories.grid"/>
+        </block>
+    </rocketweb_search_adminhtml_directsearch_categoriesgrid>
+    
+</layout>

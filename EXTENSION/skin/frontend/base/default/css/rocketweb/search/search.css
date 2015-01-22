@@ -1,0 +1,3 @@
+.cms_page_result,.blog_page_result,.category_page_result {border-bottom: 1px solid #d9ddd3;padding: 12px 10px;}
+.cms_page_result .highlight,.blog_page_result .highlight,.category_page_result .highlight {font-weight:bold;color:red;}
+.cms_search_results_container .page-title,.blog_search_results_container .page-title,.category_search_results_container .page-title {margin:0px;}

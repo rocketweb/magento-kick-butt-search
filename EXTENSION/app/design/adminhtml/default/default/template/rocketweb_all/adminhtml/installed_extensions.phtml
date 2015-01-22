@@ -1,0 +1,18 @@
+<table cellpadding="10">
+    <thead>
+        <tr style="border-bottom: 1px solid #000000; border-collapse: separate">
+            <td style="font-weight: bold; min-width: 350px;"><?php echo $this->__('Extension'); ?></td>
+            <td style="font-weight: bold; min-width: 100px;"><?php echo $this->__('Version'); ?></td>
+            <td style="font-weight: bold"><?php echo $this->__('Active'); ?></td>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->getRows() as $name => $prop): ?>
+            <tr>
+                <td><?php echo $name; ?></td>
+                <td><?php echo $prop['extension_version']; ?></td>
+                <td><?php echo $prop['active']; ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

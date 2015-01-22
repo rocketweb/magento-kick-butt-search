@@ -1,0 +1,18 @@
+<?php
+if(Mage::getModel('rocketweb_search/entities_blog')->isEnabled()): 
+	$blogs = $this->getResultCollection();
+
+?>
+
+<?php if($blogs->count()):?>
+	<div class="blog_search_results_container">
+	<br/><Br/>
+	<div class="page-title"><h1><?php echo $this->getTitle()?></h1></div>
+	<?php foreach($blogs as $blog):?>
+		<?php echo $this->getRendererBlock($blog)->toHtml();?>
+	<?php endforeach;?>
+	<?php echo $this->getPagerHtml();?>
+	</div>
+<?php endif;?>
+
+<?php endif;?>

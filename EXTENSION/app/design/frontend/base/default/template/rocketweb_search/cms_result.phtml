@@ -1,0 +1,17 @@
+<?php
+if(Mage::getModel('rocketweb_search/entities_cms')->isEnabled()): 
+	$cmsPages = $this->getResultCollection();
+?>
+
+<?php if($cmsPages->count()):?>
+	<div class="cms_search_results_container">
+	<br/><Br/>
+	<div class="page-title"><h1><?php echo $this->getTitle()?></h1></div>
+	<?php foreach($cmsPages as $cmsPage):?>
+		<?php echo $this->getRendererBlock($cmsPage)->toHtml();?>
+	<?php endforeach;?>
+	<?php echo $this->getPagerHtml();?>
+	</div>
+<?php endif;?>
+
+<?php endif;?>

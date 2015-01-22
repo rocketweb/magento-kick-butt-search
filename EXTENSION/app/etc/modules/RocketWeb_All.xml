@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <RocketWeb_All>
+            <active>true</active>
+            <codePool>community</codePool>
+        </RocketWeb_All>
+    </modules>
+</config>

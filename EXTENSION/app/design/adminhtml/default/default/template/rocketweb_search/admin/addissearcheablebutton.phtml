@@ -1,0 +1,18 @@
+<script type="text/javascript">
+    //<![CDATA[
+    function check() {
+        new Ajax.Request('<?php echo $this->getAjaxAddissearcheableUrl() ?>', {
+            method:     'post',
+            params: '<?php echo Mage_Adminhtml_Model_Url::SECRET_KEY_PARAM_NAME.'='.Mage::getSingleton('adminhtml/url')->getSecretKey()?>',
+            onSuccess: function(transport){
+            	if (transport.responseText){
+                	response = transport.responseText.evalJSON();
+                	alert(response.message);
+            	}
+            }
+        });
+    }
+    //]]>
+</script>
+ 
+<?php echo $this->getButtonHtml() ?>

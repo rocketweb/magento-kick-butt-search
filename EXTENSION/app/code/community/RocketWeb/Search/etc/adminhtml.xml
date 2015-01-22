@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <direct_search translate="title" module="rocketweb_search">
+                    <title>Direct Search Queries</title>
+                    <action>rocketweb_search/adminhtml_directsearch/</action>
+                    <sort_order>45</sort_order>
+                </direct_search>
+            </children>
+        </catalog>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <direct_search translate="title" module="rocketweb_search">
+                                <title>Direct Search Queries</title>
+                            </direct_search>
+                        </children>
+                    </catalog>
+                    <system>
+						<children>
+							<config>
+								<children>
+									<rocketweb_search translate="title" module="rocketweb_search">
+										<title>Rocket Web Kick Butt Search</title>
+										<sort_order>1005000</sort_order>
+									</rocketweb_search>
+								</children>
+							</config>
+						</children>
+					</system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

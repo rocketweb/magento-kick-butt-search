@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<rocketweb_all translate="title" module="rocketweb_all">
+										<title>RocketWeb All / General</title>
+										<sort_order>1006000</sort_order>
+									</rocketweb_all>
+                                    <rocketweb_all_extensions translate="title" module="rocketweb_all">
+                                        <title>RocketWeb All / Installed Extensions</title>
+                                        <sort_order>1007000</sort_order>
+                                    </rocketweb_all_extensions>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

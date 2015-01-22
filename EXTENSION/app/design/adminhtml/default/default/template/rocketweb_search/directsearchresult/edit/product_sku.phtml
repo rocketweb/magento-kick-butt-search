@@ -1,0 +1,84 @@
+<?php $_htmlId      = $this->getElement()->getHtmlId() ?>
+<?php $_htmlClass   = $this->getElement()->getClass() ?>
+<?php $_htmlName    = $this->getElement()->getName() ?>
+<tr>
+    <td class="label"><?php echo $this->getElement()->getLabel() ?> <span class="required">*</span></td>
+    <td colspan="10" class="grid product_sku">
+    	<table cellspacing="0" class="data border" id="product_sku">
+    		<col />
+        	<col width="95" />
+        	<col width="1" />
+        	<thead>
+            	<tr class="headings">
+            		<th><?php echo Mage::helper('catalog')->__('SKU') ?></th>
+            		<th><?php echo Mage::helper('catalog')->__('Order') ?></th>
+            		<th class="last"><?php echo Mage::helper('catalog')->__('Action') ?></th>
+            	</tr>
+            </thead>
+            <tbody id="<?php echo $_htmlId ?>_container"></tbody>
+	        <tfoot>
+	            <tr>
+	                <td></td>
+	                <td colspan="2" class="a-right"><?php echo $this->getAddButtonHtml() ?></td>
+	            </tr>
+	        </tfoot>
+	    </table>
+	    
+<script type="text/javascript">
+//<![CDATA[
+var productSkuRowTemplate = '<tr>'
+	+ '<td><input class="<?php echo $_htmlClass ?> required-entry" type="text" name="<?php echo $_htmlName ?>[{{index}}][sku]" value="{{sku}}" id="product_sku_row_{{index}}_sku" /></td>'
+	+ '<td><input class="<?php echo $_htmlClass ?> " type="text" name="<?php echo $_htmlName ?>[{{index}}][order]" value="{{order}}" id="product_sku_row_{{index}}_order" /></td>'
+	+ '<td class="last"><input type="hidden" name="<?php echo $_htmlName ?>[{{index}}][delete]" class="delete" value="" id="product_sku_row_{{index}}_delete" />'
+    + '<button title="<?php echo Mage::helper('catalog')->__("Delete SKU") ?>" type="button" class="scalable delete icon-btn delete-product-option" id="product_sku_row_{{index}}_delete_button" onclick="return productSkuControl.deleteItem(event);">'
+    + '<span><span><span><?php echo Mage::helper('catalog')->__("Delete") ?></span></span></span></button></td>'
+	+ '</tr>';
+
+var productSkuControl = {
+	template: new Template(productSkuRowTemplate, new RegExp('(^|.|\\r|\\n)({{\\s*(\\w+)\\s*}})', "")),
+	itemsCount: 0,
+	addItem : function () {
+        var data = {
+            sku: '',
+            order: '0',
+            readOnly: false,
+            index: this.itemsCount++
+        };
+
+        if(arguments.length >= 2) {
+            data.sku = arguments[0];
+            data.order = arguments[1];
+        }
+
+        Element.insert($('<?php echo $_htmlId ?>_container'), {
+            bottom : this.template.evaluate(data)
+        });
+
+        $('product_sku_row_' + data.index + '_sku').value = data.sku;
+        $('product_sku_row_' + data.index + '_order').value = data.order;
+
+        $('<?php echo $_htmlId ?>_container').select('input', 'select').each(function(el){ Event.observe(el, 'change', el.setHasChanges.bind(el)); });
+    },
+    disableElement: function(el) {
+        el.disabled = true;
+        el.addClassName('disabled');
+    },
+    deleteItem: function(event) {
+        var tr = Event.findElement(event, 'tr');
+        if (tr) {
+            Element.select(tr, '.delete').each(function(elem){elem.value='1'});
+            Element.select(tr, ['input', 'select']).each(function(elem){elem.hide()});
+            Element.hide(tr);
+            Element.addClassName(tr, 'no-display template');
+        }
+        return false;
+    }
+}
+<?php foreach ($this->getValues() as $_item): ?>
+productSkuControl.addItem('<?php echo $_item['sku'] ?>', '<?php echo $_item['order'] ?>');
+<?php endforeach; ?>
+//]]>
+</script>
+	    
+	</td>
+</tr>

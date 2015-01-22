@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Search : readme</title>
+    <link rel="stylesheet" href="skin/style.css" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+</head>
+<!--[if IE 8]>
+<body class="ie lt-ie9">
+<![endif]-->
+<!--[if IE 9]>
+<body class="ie ie9">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<body>
+<!--<![endif]-->
+    <div id="main-container">
+        <div id="header">
+            <div class="inner cf">
+                <div id="logo">
+                    <a href="http://www.rocketweb.com"><img src="skin/img/logo.png"/></a>
+                </div>
+                <div id="address">
+                    475 River Bend Rd, Ste 200C Naperville IL 60540 USA<br/>
+                    Phone: (855) 624 3686<br/>
+                    Email: <a href="mailto:info@rocketweb.com">info@rocketweb.com</a><br/>
+                </div>
+            </div>
+        </div>
+
+        <div id="main">
+            <h1>Search</h1>
+
+            <h2>Table of Contents</h2>
+            <ol>
+                <li><a href="#description">Description</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li>
+                    <a href="#configuration">Configuration</a>
+                    <ul>
+                    	<li><a href="#field_meaning">The meaning of title, sku and content fields</a></li>
+                        <li><a href="#relevance">Increasing relevance for title and sku</a></li>
+                        <li><a href="#weight">Increase the search weight for a specific product</a></li>
+                        <li><a href="#cms">Searching through CMS pages</a></li>
+                        <li><a href="#blog">Searching through blog posts</a></li>
+                        <li><a href="#categories">Searching through categories</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#directsearch">Direct search queries</a>
+                </li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+            </ol>
+
+
+            <h2 id="description">Description</h2>
+            <p><strong>Version 2.0.8</strong></p>
+            <p>Extension page: <a href="http://www.rocketweb.com/kick-butt-search">http://www.rocketweb.com/kick-butt-search</a></p>
+            <p>Magento's default search is far from optimal. The Kick Butt Search extension will improve your store's search results by both
+            making the search more relevant and giving you a set of handy methods to directly change the search results</p>
+
+            <h2 id="features">Features</h2>
+            <ul>
+                <li>Increase the relevance of keyword matches in titles and/or SKUS for a better ordering of your search results</li>
+                <li>Allows searching through cms pages, blog posts (created with the AheadWorks Blog module) and categories</li>
+                <li>Allows defining a set of search terms and their exact search results. You can also define a single
+                    entity for a search term which will take the users directly to the entities' detail page instead of passing
+                    through the results page</li>
+                <li>Allows increasing search weight for specific products so they appear higher in the results</li>
+            </ul>
+
+            <h2 id="installation">Installation</h2>
+
+            <h3>Backup your data</h3>
+            <p>Backup the database and your store's web directory.</p>
+
+            <h3>Disable Compilation</h3>
+            <p>This step is for Magento 1.4+ versions. If you are running an older version, this step can be skipped. In the Magento admin panel, go to System->Tools->Compilation.
+            In case "Compiler Status" is "Enabled", click on the "Disable" button (in case the status is disabled you can skip this step): </p>
+            <p><img src="skin/img/disablec1.png" /></p>
+
+            <p>This screen should now look like this:</p>
+            <p><img src="skin/img/disablec2.png" /></p>
+
+            <h3>Download and Extract</h3>
+            <p>Download and extract (unzip) the extension's contents on you computer. Navigate inside the extracted folder.</p>
+
+            <h3>Upload files</h3>
+            <p>Using a FTP client, upload the content of the extension directory to the store's document root, so that the app directory in
+            the extension folder overwrites the app directory on the server. If asked to replace any files, select "Yes".</p>
+
+            <h3>Clear the cache</h3>
+            <p>In the Magento admin panel, go to System->Cache Management and press the "Flush Magento Cache" button:</p>
+            <p><img src="skin/img/cc.png" /></p>
+
+            <h3 id="reindex-catalog-search">Re-index catalog search index</h3>
+            <p>A message that the catalog search index is not up to date will appear. Click on the link:</p>
+
+            <p><img src="skin/img/i1.png" /></p>
+
+            <p>Select the "Catalog Search Index" and press the submit action, making sure the selected action is "Reindex Data"
+                (depending on the number of products, this may take a while):</p>
+
+            <p><img src="skin/img/i2.png" /></p>
+
+            <h2 id="configuration">Configuration</h2>
+            
+            	<h3 id="field_meaning">The meaning of title, sku and content fields for the searcheable entities</h3>
+                <p>Kick Butt Search will split the searchable fields into "title", "sku" and "content". The "content" ones will always have the weight of one,
+                while title and sku can be configured (they have the weights 5 and 3 by default). The whole point of weights is to give more importance to certain fields
+                like product title or blog keywords, improving the quality of the search results. The following table describes what entity attributes does each field contain:</p>
+                <table class="table" cellspacing="0" cellpadding="5">
+                    <tr>
+                        <th>Entity</th>
+                        <th>Title field</th>
+                        <th>Sku Field</th>
+                        <th>Content field</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Product</strong></td>
+                        <td>Product name</td>
+                        <td>Product SKU</td>
+                        <td>All product attributes defined as searchable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Category</strong></td>
+                        <td>Category name</td>
+                        <td>n/a</td>
+                        <td>Category description</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CMS Page</strong></td>
+                        <td>CMS page title, Content heading</td>
+                        <td>n/a</td>
+                        <td>CMS page content</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Blog</strong></td>
+                        <td>Blog post title, keywords</td>
+                        <td>n/a</td>
+                        <td>Blog post content</td>
+                    </tr>
+                </table>
+
+                <h3 id="relevance">Increasing relevance for title and sku</h3>
+
+                    <p>(This feature is on by default, follow these steps if you want to change/tweak it)</p>
+                    <p>In the Magento admin panel, go to System->Configuration, then click on the "Kick Butt Search" link from the
+                    right menu, located under "ROCKETWEB EXTENSIONS". You will see the following screen:</p>
+
+                    <p><img src="skin/img/c1.png" /></p>
+
+                    <p>From here, you can enable and disable this feature. Note that you will need to re-index the Catalog Search Index
+                    after a enable/disable operation.</p>
+                    <p>The next option is to Enable the search of skus in the products that are associated or compose a configurable, bundle  or 
+                    grouped product.</p>
+                    <p>The third option is to escape "-" or "+" characters when the search is done in Combined mode. If this option is disabled 
+                    MySQL match against will split the words and give more results that might not be relevant.</p>
+                    <p>You can also change the weight of the title or sku from here. A weight of 5 for the title means that a keyword match in
+                    the title will be 5 times more important than a match in the description/other fields. A weight of 0 makes the title
+                    match be as important as any other match (default behaviour). Note that this only changes the order of you search results,
+                    not the number of found items.</p>
+
+                    <p>Back on the frontend, a search for a term will bring the title matches first, which is something that you want
+                    in most cases:</p>
+
+                    <p><img src="skin/img/c2.png" /></p>
+                    
+
+
+                <h3 id="weight">Increase the search weight for a specific product</h3>
+
+                    <p>This feature is usefull if you have products that you want to show higher in the search results</p>
+                    <p>In the Magento admin panel, go and edit the product you want to assign a higher weight:</p>
+
+                    <p><img src="skin/img/c5.png" /></p>
+
+                    <p>The Search Boost attribute is a numeric value that defines how important a product is in search results.
+                    A value of empty, zero or one means that the product does not have any special weight.</p>
+                    <p>The weight must be considered in context: If product X has the boost attribute set to two and you do a search
+                    that does not matches X's title, other products that have title matches will appear first (as the title match is 5x),
+                    but X will appear as the first of the products that do not have a title match. If you would set the boost to 10,
+                    then X will appear in front of the products that have title matches too. Setting proper boosts requires some
+                    experimentation with the search results, as boosts that are too big may bring irrelevant results in the top of the
+                    searches. </p>
+                    
+               <h3 id="cms">Searching through CMS pages</h3>
+               
+               		<h4>General configuration</h4>
+               
+               		<p>First, make sure that CMS search is enabled by going to System->Configuration->Kick Butt Search, "CMS pages search" tab and making sure that 
+               		"Enable searching through CMS Pages?" is set to "Yes"</p>
+               		
+               		<p><img src="skin/img/cms-settings.png" /></p>
+               		
+               		<p>After this, re-index catalog search index (<a href="#reindex-catalog-search">Click here to see how</a>).</p>
+               		<p>CMS pages are now available in the search results:</p>
+               		
+               		<p><img src="skin/img/cms-search.png" /></p>
+               		
+               		<h4>Deciding which CMS pages are searchable</h4>
+               		
+               		<p>By default, all CMS pages except "404 Not Found" and "Enable Cookies" are searchable. You can set each page to be visible in search by setting 
+               		the "Is Searchable" attribute to "Yes" or "No" inside the CMS Add/Edit screen:</p>
+               		
+               		<p><img src="skin/img/cms-edit.png" /></p>
+               		
+               		<h4>CMS Search results display settings</h4>
+               		
+               		<p>The search results page aspect can be defined at System->Configuration->Kick Butt Search, "CMS pages search" tab:</p>
+               		<ul>
+               			<li><strong>CMS Results block title</strong> - defines the title of the CMS search results block. You can use the {{query}} placeholder to display the searched string</li>
+               			<li><strong>Number of cms results per page</strong> - how many CMS page search results are displayed per page</li>
+               			<li><strong>CMS Results snippet length</strong> - The cms results also display as snippet of the page text. The snippet is stripped of html tags and 
+               			will display one of the text portions that contains the searched keywords. This parameter defines the maximum snippet length, in number of characters</li>
+               		</ul>
+
+               <h3 id="blog">Searching through blog posts</h3>
+               
+               		<h4>Making sure AheadWorks Blog module is installed</h4>
+               		<p>Kick Butt Search is able to search through blog posts that are created with the Aheadworks Blog module. 
+               		The module is available at <a href="http://ecommerce.aheadworks.com/free-stuff/blog.html">http://ecommerce.aheadworks.com/free-stuff/blog.html</a> for free.
+               		If you do not have this module installed, please follow the details at <a href="http://doc.aheadworks.com/magento-extensions/AW_Blog-1.2.1/readme.html">http://doc.aheadworks.com/magento-extensions/AW_Blog-1.2.1/readme.html</a> 
+               		to install it.</p>
+
+               		<p><strong>Important:</strong> In case you install the blog module after you have installed Kick Butt Search, you will need to update the database to add the searchable attribute to blog posts.
+               		You can do this by going to System->Configuration->Kick Butt Search, "AW blog posts search" tab and clicking on the "Add "Is Searchable" option to blog posts" button:</p>
+               		
+               		<p><img src="skin/img/blog-settings2.png" /></p>
+               		
+               		<p>You will get a success message. Also, on page refresh, the button wil dissappear which means that the database was updated sucesfully.</p>
+               		
+               		
+               		<h4>General configuration</h4>
+               
+               		<p>First, make sure that Blog search is enabled by going to System->Configuration->Kick Butt Search, "AW Blog posts search" tab and making sure that 
+               		"Enable searching through blog posts?" is set to "Yes". Also, make sure you have installed the AW Blog extension as explained in the previous section and 
+               		that you have clicked the Add "Is Searchable" option to blog posts button if needed.</p>
+               	
+               		
+               		<h4>Deciding which blog postss are searchable</h4>
+               		
+               		<p>By default, all blog posts are searchable. You can set each blog post to be visible in search by setting 
+               		the "Is Searchable" attribute to "Yes" or "No" inside the Blog post Add/Edit screen:</p>
+               		
+               		<p><img src="skin/img/blog-edit.png" /></p>
+               		
+               		<h4>Blog Search results display settings</h4>
+               		
+               		<p>The search results page aspect can be defined at System->Configuration->Kick Butt Search, "AW Blog posts search" tab:</p>
+               		<ul>
+               			<li><strong>Blog Results block title</strong> - defines the title of the blog search results block. You can use the {{query}} placeholder to display the searched string</li>
+               			<li><strong>Number of blog results per page</strong> - how many blog search results are displayed per page</li>
+               			<li><strong>Blog Results snippet length</strong> - The blog results also display as snippet of the page text. The snippet is stripped of html tags and 
+               			will display one of the text portions that contains the searched keywords. This parameter defines the maximum snippet length, in number of characters</li>
+               		</ul>
+
+            <h2 id="categories">Searching through categories</h2>
+            
+            		<h3>General configuration</h3>
+               
+               		<p>First, make sure that Category search is enabled by going to System->Configuration->Kick Butt Search, "Category search" tab and making sure that 
+               		"Enable searching through categories?" is set to "Yes"</p>
+               		
+               		<p><img src="skin/img/cs1.png" /></p>
+               		
+               		<p>After this, re-index catalog search index (<a href="#reindex-catalog-search">Click here to see how</a>).</p>
+               		<p>Categories are now available in the search results:</p>
+               		
+               		<p><img src="skin/img/cs2.png" /></p>
+               		
+               		<h3>Deciding which categories are searchable</h3>
+               		
+               		<p>By default, all cagtegories except root-level ones are searchable. You can set each category to be visible in search by setting 
+               		the "Is Searchable" attribute to "Yes" or "No" inside the Category Add/Edit screen:</p>
+               		
+               		<p><img src="skin/img/cs3.png" /></p>
+               		
+               		<h3>Category Search results display settings</h3>
+               		
+               		<p>The search results page aspect can be defined at System->Configuration->Kick Butt Search, "Categories search" tab:</p>
+               		<ul>
+               			<li><strong>Category Results block title</strong> - defines the title of the category search results block. You can use the {{query}} placeholder to display the searched string</li>
+               			<li><strong>Number of category results per page</strong> - how many category search results are displayed per page</li>
+               			<li><strong>Category Results snippet length</strong> - The category results also display as snippet of the category description. The snippet is stripped of html tags and 
+               			will display one of the text portions that contains the searched keywords. This parameter defines the maximum snippet length, in number of characters</li>
+               		</ul>
+
+			
+			<h2 id="directsearch">Defining direct search queries</h2>
+					
+					<p>The direct search query feature of Kick Butt Search is helpfull in two scenarios:</p>
+					<ul>
+						<li>You want to define a "I'm feeling lucky" search. When searching for a specific query, you want the user to be taken directly to a product detail/
+						category detail/cms page/blog post instead of showing a traditional search results page.</li>
+						<li>You want to have total control over the results displayed for a specific query.</li>
+					</ul>
+
+                    <p>To define a search term with exact results, go to Catalog->Direct Search Queries in the admin panel.
+                        The page will list all the direct searches (empty if this is the first time you are using it).
+                        Press the "Add Direct Search Result" button:</p>
+
+                    <p><img src="skin/img/c3.png" /></p>
+
+                    <p>Fill in the fields for the direct search result:</p>
+
+                    <p><img src="skin/img/c6.png" /></p>
+
+                    <ul>
+                        <li><strong>Search Phrase:</strong> the exact search phrase that we want to define search results for</li>
+                        <li><strong>Store view:</strong> If you want this to be active only on certain store views, set them here. Leave "All store views"
+                        selected to apply it on all your storeviews</li>
+                        <li><strong>Status:</strong> enable/disable this direct search query</li>
+                    </ul>
+
+					<p>After filling the general details, go to the one or more of the additional tabs (Products, CMS Pages, Blogs, Categories) and pick one or more 
+					entities that will be displayed in the search results. For each search result, you can specify a numeric "order" parameter. This will define the order of
+					the search results (the lower the number the higher the result). Here is an example on how to pick 2 products and add order numbers:</p>
+
+                    <p><img src="skin/img/c7.png" /></p>
+
+                    <p>You cannot specify zero entities for a search result. If you specify a single entity, the customer will be directly taken to that entitie's detail
+                    page. If multiple results are specified, the customer will see a result page with the defined entities.</p>
+
+
+            <h2 id="troubleshooting">Troubleshooting</h2>
+
+            <h3>When I try to access your extension's configuration at System->Configuration->[[EXTENSION PATH]], I get a 404 error</h3>
+            <p>Logout & Login back into the Magento admin panel.</p>
+            
+            <h3>I have installed the AW Blogs extension and want to search blog entries, but now I am getting a fatal error when doing a search</h3>
+            <p>If you installed the blog extension after Kick Butt Search, do the step described <a href="#blog">here</a></p>
+            
+            <h3>I cannot see entity X on my search results. What do I do?</h3>
+            	<ol>
+            		<li>Try re-indexing catalog search (<a href="#reindex-catalog-search">click here to see how to do it</a>)</li>
+            		<li>Make sure the entity type is searchable. For example, if you are missing a CMS page result, go to System->Configuration->Kick Butt Search 
+            		and make sure "Enable searching through CMS Pages?" is set to "Yes". If it was set to "No", you need to re-index catalog search after enabling. Product
+            		search is always enabled</li>
+            		<li>Is your specific entity searchable? Go to the entity edit screen (i.e. CMS page edit screen) and make sure the "Is Searchable" property is 
+            		set to "Yes"</li>
+            		<li>Are you sure there is no direct search result defined for you search? Go to Catalog -> Direct Search Queries and make sure the string you are
+            		searching for is not defined as a direct search query which does not include your result</li>
+            		<li>On what attribute is the keyword(s) you are searching for defined inside the entity? Have a look at 
+            		<a href="#field_meaning">The meaning of title, SKU and content fields for the searchable entities</a>. If the keyword is part of an attribute 
+            		that is not present in that table, it will not be searched</li>
+            	</ol>
+
+            <h3>I see that you extension searches through blog posts, but I cannot see any option related to blogs, neither can I search through them.</h3>
+            <p>Kick Butt Search searches through blog posts created with the AheadWorks Blog module. See <a href="#blog">here</a> on how to install this extension.
+            If you have a different blog extension installed, Kick Butt Search will not be able to search through the posts.</p>
+            
+            <h3><a href="#ft_min_word_len">How to set ft_min_word_len and repair the database.</a></h3>
+            <p>To set "ft_min_word_len" someone has to have access to mysql's configuration file "my.cnf". On a linux system with a default configuration it can be found 
+                under "/etc/mysql/my.cnf". This file has some sections that have titles written in brackets. To add or change "ft_min_word_len" 
+                we have to look under the section "[mysqld]". If it's not already there we can add it on a new line with the value that we want (default value is 4), 
+                for example 3 "ft_min_word_len = 3".
+                After you set the "ft_min_word_len" you have to restart the mysql server and you can check the new value by running the following query 
+                "show variables like 'ft_min_word_len'". After restarting the server, the databases have to be repaired, to do a check on repair on all you can use:
+                "mysqlcheck -u root -p --auto-repair -c --all-databases".
+                We recommend that you first try this on a development server that has the same mysql instance and databases as the production server, before trying this
+                on the production server.
+                If you don't have ssh access to the server, please ask your hosting provider to do these changes for you.
+            </p>
+
+        </div>
+
+        <div id="footer">
+            <div class="inner">
+                <p>&copy; 2013 Rocket Web Inc.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

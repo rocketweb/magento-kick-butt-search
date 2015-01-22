@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <rocketweb_tab>
+            <label>Rocket Web Extensions</label>
+            <sort_order>1005001</sort_order>
+        </rocketweb_tab>
+    </tabs>
+    <sections>
+    	<rocketweb_search  translate="label" module="rocketweb_search">
+    		<label>Kick Butt Search</label>
+            <tab>rocketweb_tab</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>300</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+            	<search_weights>
+            		<label>Search Weights</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<enable translate="label comment">
+                            <label>Enable search weights?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <comment><![CDATA[<strong>When changing this setting, you will need to go to System->Index Management and reindex the "Catalog Search Index" index</strong>]]></comment>
+                        </enable>
+                        <enable_Escape translate="label comment">
+                            <label>Enable Escaping for - and + so that is not used as words splitter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[<strong>When changing this setting, you will need to go to System->Index Management and reindex the "Catalog Search Index" index</strong>]]></comment>
+                        </enable_Escape>
+                        <enable_sku translate="label comment">
+                            <label>Enable SKU search for child products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[<strong>When changing this setting, you will need to go to System->Index Management and reindex the "Catalog Search Index" index</strong>]]></comment>
+                        </enable_sku>
+                        <title_weight translate="label comment">
+                        	<label>Title Weight</label>
+                        	<frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <comment>The higher the weight of the title, the bigger the chances for a title match to show up higher in the search results. A value of 5 means that a match in the title is 5x more important than a match in the description.</comment>
+		                    <depends><enable>1</enable></depends>
+                        </title_weight>
+                        <sku_weight translate="label comment">
+                        	<label>SKU Weight</label>
+                        	<frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <comment>The higher the weight of the sku, the bigger the chances for a sku match to show up higher in the search results. A value of 3 means that a match in the sku is 3x more important than a match in the description.</comment>
+		                    <depends><enable>1</enable></depends>
+                        </sku_weight>
+                    </fields>
+            	</search_weights>
+            	<cms_search>
+            		<label>CMS pages search</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<enable translate="label comment">
+                            <label>Enable searching through CMS Pages?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </enable>
+                        <results_title translate="label comment">
+                        	<label>CMS Results block title</label>
+                        	<frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <depends><enable>1</enable></depends>
+		                    <comment>{{query}} will be replaced with the searched string</comment>
+                        </results_title>
+                        <snippet_length translate="label comment">
+                        	<label>CMS Results snippet length</label>
+                        	<frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <depends><enable>1</enable></depends>
+                        </snippet_length>
+                        <num_per_page>
+                        	<label>Number of cms results per page</label>
+                        	<frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <depends><enable>1</enable></depends>
+                        </num_per_page>
+                    </fields>
+            	</cms_search>
+            	<category_search>
+            		<label>Category search</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>25</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<enable translate="label comment">
+                            <label>Enable searching through categories?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </enable>
+                        <results_title translate="label comment">
+                        	<label>Category Results block title</label>
+                        	<frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <depends><enable>1</enable></depends>
+		                    <comment>{{query}} will be replaced with the searched string</comment>
+                        </results_title>
+                        <snippet_length translate="label comment">
+                        	<label>Category Results snippet length</label>
+                        	<frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <depends><enable>1</enable></depends>
+                        </snippet_length>
+                        <num_per_page>
+                        	<label>Number of category results per page</label>
+                        	<frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <depends><enable>1</enable></depends>
+                        </num_per_page>
+                    </fields>
+            	</category_search>
+            	<aw_blog_search>
+            		<label>AW Blog posts search</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[<strong style="color:red">You need to have the Blog extension by AheadWorks for blog search to work. It can be downloaded from <a href="http://www.magentocommerce.com/magento-connect/blog-community-edition.html">here</a></strong>]]></comment>
+                    <fields>
+                    	<enable translate="label comment">
+                            <label>Enable searching through blog posts?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </enable>
+                        <results_title translate="label comment">
+                        	<label>Blog Results block title</label>
+                        	<frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <depends><enable>1</enable></depends>
+		                    <comment>{{query}} will be replaced with the searched string</comment>
+                        </results_title>
+                        <snippet_length translate="label comment">
+                        	<label>Blog Results snippet length</label>
+                        	<frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <depends><enable>1</enable></depends>
+                        </snippet_length>
+                        <num_per_page>
+                        	<label>Number of blog results per page</label>
+                        	<frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <depends><enable>1</enable></depends>
+                        </num_per_page>
+                        <add_searcheable_field>
+                        	<label>Add "Is Searchable" option to blog posts</label>
+                        	<frontend_type>button</frontend_type>
+                        	<sort_order>50</sort_order>
+                        	<frontend_model>rocketweb_search/adminhtml_system_config_form_button_addissearcheable</frontend_model>
+                        	<show_in_default>1</show_in_default>
+                			<show_in_website>1</show_in_website>
+                			<show_in_store>1</show_in_store>
+                        </add_searcheable_field>
+                    </fields>
+            	</aw_blog_search>
+            </groups>
+    	</rocketweb_search>
+    </sections>
+</config>

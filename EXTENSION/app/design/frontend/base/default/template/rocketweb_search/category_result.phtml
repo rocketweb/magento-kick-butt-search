@@ -1,0 +1,17 @@
+<?php
+if(Mage::getModel('rocketweb_search/entities_category')->isEnabled()): 
+	$categories = $this->getResultCollection();
+?>
+
+<?php if($categories->count()):?>
+	<div class="category_search_results_container">
+	<br/><Br/>
+	<div class="page-title"><h1><?php echo $this->getTitle()?></h1></div>
+	<?php foreach($categories as $category):?>
+		<?php echo $this->getRendererBlock($category)->toHtml();?>
+	<?php endforeach;?>
+	<?php echo $this->getPagerHtml();?>
+	</div>
+<?php endif;?>
+
+<?php endif;?>
