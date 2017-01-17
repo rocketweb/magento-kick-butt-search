@@ -1,0 +1,10 @@
+{
+  "name": "rocketweb/magento-kick-butt-search",
+  "license": "Apache-2.0",
+  "type": "magento-module",
+  "description": "Improve Magento MySQL search by fixing some of the most common problems for many store owners.",
+  "homepage": "http://www.rocketweb.com",
+  "require": {
+    "magento-hackathon/magento-composer-installer": "*"
+  }
+}
