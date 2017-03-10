@@ -1,0 +1,10 @@
+EXTENSION/app/code/community/RocketWeb/All app/code/community/RocketWeb/All
+EXTENSION/app/code/community/RocketWeb/Search app/code/community/RocketWeb/Search
+EXTENSION/app/design/adminhtml/default/default/layout/rocketweb_search.xml app/design/adminhtml/default/default/layout/rocketweb_search.xml
+EXTENSION/app/design/adminhtml/default/default/template/rocketweb_all app/design/adminhtml/default/default/template/rocketweb_all
+EXTENSION/app/design/adminhtml/default/default/template/rocketweb_search app/design/adminhtml/default/default/template/rocketweb_search
+EXTENSION/app/design/frontend/base/default/layout/rocketweb_search.xml app/design/frontend/base/default/layout/rocketweb_search.xml
+EXTENSION/app/design/frontend/base/default/template/rocketweb_search app/design/frontend/base/default/template/rocketweb_search
+EXTENSION/app/etc/modules/RocketWeb_All.xml app/etc/modules/RocketWeb_All.xml
+EXTENSION/app/etc/modules/RocketWeb_Search.xml app/etc/modules/RocketWeb_Search.xml
+EXTENSION/skin/frontend/base/default/css/rocketweb/search skin/frontend/base/default/css/rocketweb/search
